@@ -1,9 +1,10 @@
 import Checkbox from "./Checkbox";
 
-function Task({name,done}) {
+function Task({ name, done, onToggle }) {
+  //the newDone will be the opposite of done, so !done
   return (
     <div className="task">
-      <Checkbox defaultChecked={done}/>
+      <Checkbox checked={done} onClick={() => onToggle(!done)} />
       {name}
     </div>
   );

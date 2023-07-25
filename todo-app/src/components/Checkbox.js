@@ -1,9 +1,10 @@
-import { useState } from "react";
 
-function Checkbox({ defaultChecked = false }) {
-  const [checked, setChecked] = useState(defaultChecked);
+//checked = false: This is a default value for the checked prop. If the checked prop is not provided when the Checkbox component is used, it will default to false.
+function Checkbox({ checked = false, onClick }) {
+  //we can get rid of this state and make the component a controlled component
+  //const [checked, setChecked] = useState(defaultChecked);
   return (
-    <div>
+    <div onClick={onClick}>
       {!checked && (
         <div className="checkedbox unchecked">
           <svg
