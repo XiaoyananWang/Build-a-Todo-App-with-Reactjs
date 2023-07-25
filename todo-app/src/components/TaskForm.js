@@ -23,7 +23,7 @@ function TaskForm({ onAdd }) {
     setTaskName("");
   }
   return (
-    <form onSubmit={(event) => handleSubmit(event)}>
+    <form onSubmit={handleSubmit}>
       <button>+</button>
       <input
         type="text"
