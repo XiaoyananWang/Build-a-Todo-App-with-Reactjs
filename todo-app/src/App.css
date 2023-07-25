@@ -1,6 +1,6 @@
 body {
   background-color: #17181f;
-  color: #aaa;
+  color: #ddd;
 }
 
 * {
@@ -41,8 +41,33 @@ div.task {
   padding: 5px 9px;
   margin-top: 5px;
   display: flex;
+  transition: opacity 0.3s linear;
 }
 div.task svg {
   height: 20px;
-  margin-right: 4px;
+  margin-right: 6px;
+  fill: #61dafb;
+}
+
+div.task.done {
+  opacity: 0.3;
+}
+
+div.task span {
+  position: relative;
+}
+
+div.task span:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background-color: #ddd;
+  position: absolute;
+  top: 10px;
+  transition: width .2s linear;
+}
+
+div.task.done span:before {
+  width: 100%;
 }
