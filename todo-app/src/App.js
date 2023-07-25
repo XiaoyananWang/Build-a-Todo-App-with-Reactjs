@@ -56,6 +56,13 @@ function App() {
     });
   }
 
+  function renameTask(index, newName) {
+    setTasks((prev) => {
+      const newTasks = [...prev];
+      newTasks[index] = newName;
+      return newTasks;
+    });
+  }
   //move these above so we can use them in getMessage
   const numberCompleted = tasks.filter((t) => t.done).length;
   const numberTotal = tasks.length;
@@ -82,6 +89,7 @@ function App() {
       {tasks.map((task, index) => (
         <Task
           {...task}
+          onRename={(newName) => renameTask(index, newName)}
           onToggle={(done) => handleTaskDone(index, done)}
           onDelete={() => handleDelete(index)}
         />

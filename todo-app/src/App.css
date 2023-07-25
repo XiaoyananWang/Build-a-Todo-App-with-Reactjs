@@ -54,7 +54,8 @@ div.task.done {
   opacity: 0.3;
 }
 
-div.task-name {
+div.task-name,
+div.task form {
   flex-grow: 1;
 }
 
@@ -97,4 +98,10 @@ button.delete {
 button.delete svg {
   fill: #888;
   height: 14px;
+}
+
+div.task input {
+  border: 2px solid #777;
+  border-radius: 5px;
+  padding: 2px 4px;
 }
