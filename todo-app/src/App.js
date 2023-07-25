@@ -47,6 +47,14 @@ function App() {
       return newTasks;
     });
   }
+  //The filter() method takes a callback function as an argument. This callback function is executed for each element in the array, and it should return a boolean value. If the callback function returns true for a specific element, that element will be included in the new filtered array. If it returns false, the element will be excluded from the new array.
+  function handleDelete(taskIndexToRemove) {
+    setTasks((prev) => {
+      return prev.filter((taskObject, index) => {
+        return index !== taskIndexToRemove;
+      });
+    });
+  }
 
   //move these above so we can use them in getMessage
   const numberCompleted = tasks.filter((t) => t.done).length;
@@ -54,11 +62,11 @@ function App() {
 
   function getMessage() {
     const percentage = (numberCompleted / numberTotal) * 100;
-    if(percentage===0){
-      return 'Try to do at least one!🙏'
+    if (percentage === 0) {
+      return "Try to do at least one!🙏";
     }
-    if(percentage===100){
-      return 'Nice job for today!🎉'
+    if (percentage === 100) {
+      return "Nice job for today!🎉";
     }
     return "keep it going 💪";
   }
@@ -72,7 +80,11 @@ function App() {
       <h2>{getMessage()}</h2>
       <TaskForm onAdd={handleAddTask} />
       {tasks.map((task, index) => (
-        <Task {...task} onToggle={(done) => handleTaskDone(index, done)} />
+        <Task
+          {...task}
+          onToggle={(done) => handleTaskDone(index, done)}
+          onDelete={() => handleDelete(index)}
+        />
       ))}
     </main>
   );
