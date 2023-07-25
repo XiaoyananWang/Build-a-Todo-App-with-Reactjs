@@ -56,12 +56,12 @@ function App() {
     });
   }
 
-  function renameTask(index, newName) {
-    setTasks((prev) => {
+  function renameTask(index,newName) {
+    setTasks(prev => {
       const newTasks = [...prev];
-      newTasks[index] = newName;
+      newTasks[index].name = newName;
       return newTasks;
-    });
+    })
   }
   //move these above so we can use them in getMessage
   const numberCompleted = tasks.filter((t) => t.done).length;

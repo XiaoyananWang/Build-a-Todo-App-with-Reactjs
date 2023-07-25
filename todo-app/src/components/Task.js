@@ -2,30 +2,22 @@ import Checkbox from "./Checkbox";
 import { useState } from "react";
 
 function Task({ name, done, onToggle, onDelete, onRename }) {
-  const [editMode, setEditMode] = useState(false);
+  const [editMode,setEditMode] = useState(false);
   //the newDone will be the opposite of done, so !done
   return (
     //adding extra className to this div to add the crossing line to the task if it's done
     //To add an animation to the linn-through, you can add a span element first to the name
-    <div className={"task " + (done ? "done" : "")}>
+    <div className={'task ' + (done?'done':'')}>
       <Checkbox checked={done} onClick={() => onToggle(!done)} />
       {!editMode && (
-        <div className="task-name" onClick={() => setEditMode((prev) => !prev)}>
+        <div className="task-name" onClick={() => setEditMode(prev => !prev)}>
           <span>{name}</span>
         </div>
       )}
       {editMode && (
-        <form
-          onSubmit={(ev) => {
-            ev.preventDefault();
-            setEditMode(false);
-          }}
-        >
-          <input
-            type="text"
-            value={name}
-            onChange={(ev) => onRename(ev.target.value)}
-          />
+        <form onSubmit={ev => {ev.preventDefault();setEditMode(false);}}>
+          <input type="text" value={name}
+                 onChange={ev => onRename(ev.target.value)} />
         </form>
       )}
       <button className="delete" onClick={onDelete}>
