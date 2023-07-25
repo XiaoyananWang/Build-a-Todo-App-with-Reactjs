@@ -65,9 +65,14 @@ div.task span:before {
   background-color: #ddd;
   position: absolute;
   top: 10px;
-  transition: width .2s linear;
+  transition: width 0.2s linear;
 }
 
 div.task.done span:before {
   width: 100%;
+}
+
+h1,
+h2 {
+  text-align: center;
 }

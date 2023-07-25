@@ -48,9 +48,28 @@ function App() {
     });
   }
 
+  //move these above so we can use them in getMessage
+  const numberCompleted = tasks.filter((t) => t.done).length;
+  const numberTotal = tasks.length;
+
+  function getMessage() {
+    const percentage = (numberCompleted / numberTotal) * 100;
+    if(percentage===0){
+      return 'Try to do at least one!🙏'
+    }
+    if(percentage===100){
+      return 'Nice job for today!🎉'
+    }
+    return "keep it going 💪";
+  }
+
   //every information we got in task, we pass it to the <Task />
   return (
     <main>
+      <h1>
+        {numberCompleted}/{numberTotal} Completed
+      </h1>
+      <h2>{getMessage()}</h2>
       <TaskForm onAdd={handleAddTask} />
       {tasks.map((task, index) => (
         <Task {...task} onToggle={(done) => handleTaskDone(index, done)} />
